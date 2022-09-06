@@ -51,9 +51,11 @@ class MyArray{
        // debugger;
         const arr=new MyArray();
         for (let i=0;i<this.length;i++){
-            if (MyArray.isArray(this[i]))
-            {arr.push(...this[i].flat());}
-            else arr.push(this[i]);
+            if ((MyArray.isArray(this[i])) & (nestlvl>0)){
+            arr.push(...this[i].flat(nestlvl-1));
+            } else {
+                arr.push(this[i])
+            };
         }
         return arr;     
     }
@@ -63,6 +65,7 @@ const homework = new MyArray(42, 2, 3, 1, new MyArray(3, 2, 1, 2, new MyArray(4,
 
 const homework2 = new MyArray(42, 2, 3, 1, new MyArray(3, 2, 1, 2,new MyArray(4, 2, 1, 2) ,8 , 51, new MyArray(8,8,44,new MyArray(9,8,7,new MyArray(55,33),78),99),64),3333 );
 
+const hw2 = homework.flat();
 
 
 
